@@ -43,6 +43,41 @@ int main()
 }
 /* 请在这里填写答案 */
 
+string* Readstring()
+{
+    string* s = (string*)malloc(sizeof(string));
+    s->head = (chunk*)malloc(sizeof(chunk));
+    s->head->next = NULL;
+    s->tail = s->head;
+    char a[(int)1e5 + 10];
+    scanf("%s", a);
+    int len = strlen(a);
+    int num = len / N;
+    if (len % N) { num++; }
+    int index = 0;
+    for (int i = 0; i < num; i++)
+    {
+        chunk* p = (chunk*)malloc(sizeof(chunk));
+        p->next = NULL;
+        s->tail->next = p;
+        s->tail = p;
+        if (i != num - 1) 
+        { 
+            p->ch = (char*)calloc(N, sizeof(char)); 
+            
+        }
+        else 
+        { 
+            p->ch = (char*)calloc(len % N, sizeof(char)); 
+        }
+
+        
+
+
+    }
+
+}
+
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 
