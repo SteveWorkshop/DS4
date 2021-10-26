@@ -25,7 +25,24 @@ int main()
 /* 请在这里填写答案 */
 double count_Determinant(double** det, int n)
 {
-
+    for (int circle = 1; circle <= n - 1; circle++)//整个过程需要处理n-1轮
+    {
+        for (int i = circle + 1; i <= n; i++)//从C往下的每一行
+        {
+            double factor;
+            factor = det[i][circle] / det[circle][circle];
+            for (int j = circle; j <= n; j++)//第i行的每一列（列号恰好从C开始）
+            {
+                det[i][j] = det[i][j] - factor * det[circle][j];
+            }
+        }
+    }
+    double ans2 = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        ans2 *= det[i][i];
+    }
+    return ans2;
 }
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
